@@ -21,7 +21,7 @@ model User {
 model Product {
   id          String   @id @default(uuid())
   createdAt   DateTime @default(now())
-  name        String   @db.VarChar(255)
+  name        String   @db.VarChar(255) // puttig limit on number of characters
   belongsToId String
   belongsTo   User     @relation(fields: [belongsToId], references: [id])
   updates     Update[]
@@ -32,6 +32,7 @@ enum UPDATE_STATUS {
   SHIPPED
   DEPRECATED
 }
+// Enum, its just like bag of constants
 
 model Update {
   id          String        @id @default(uuid())
